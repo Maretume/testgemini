@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -22,9 +21,9 @@ return new class extends Migration
             $table->string('Kd_user', 3)->nullable();
 
             $table->index('Tanggal', 'idx_peminjaman_tanggal');
-
-            $table->foreign('Kd_karyawan', 'fk_peminjaman_karyawan')->references('Kd_karyawan')->on('karyawan')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('Kd_user', 'fk_peminjaman_user')->references('Kd_user')->on('user')->onDelete('set null')->onUpdate('cascade');
+            
+            $table->foreign('Kd_karyawan')->references('Kd_karyawan')->on('karyawan')->onDelete('RESTRICT')->onUpdate('CASCADE');
+            $table->foreign('Kd_user')->references('Kd_user')->on('user')->onDelete('SET NULL')->onUpdate('CASCADE');
         });
     }
 

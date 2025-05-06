@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -29,10 +28,9 @@ return new class extends Migration
             $table->string('no_ktp', 16);
             $table->string('bank', 3);
             $table->string('no_rek', 16);
-
-            $table->index('Nm_karyawan');
-            $table->foreign('Kd_jabatan')->references('Kd_jabatan')->on('jabatan')->restrictOnDelete()->cascadeOnUpdate();
-            $table->foreign('Id_ptkp')->references('Id_ptkp')->on('ptkp')->nullOnDelete()->cascadeOnUpdate();
+            
+            $table->foreign('Kd_jabatan')->references('Kd_jabatan')->on('jabatan')->onDelete('RESTRICT')->onUpdate('CASCADE');
+            $table->foreign('Id_ptkp')->references('Id_ptkp')->on('ptkp')->onDelete('SET NULL')->onUpdate('CASCADE');
         });
     }
 

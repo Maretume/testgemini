@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -14,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('ptkp', function (Blueprint $table) {
             $table->integer('Id_ptkp')->primary();
-            $table->string('Kd_ptkp', 12)->nullable();
-            $table->decimal('Total_ptkp', 15, 2)->default(0.00);
-            $table->string('Keterangan', 100)->nullable();
+            $table->string('Keterangan', 50);
+            $table->decimal('Besaran_ptkp', 15, 2)->default(0.00);
         });
     }
 

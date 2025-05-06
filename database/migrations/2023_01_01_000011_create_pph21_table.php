@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -13,19 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pph21', function (Blueprint $table) {
-            $table->increments('no_pph21');
             $table->string('Kd_karyawan', 5);
-            $table->string('Periode_gaji', 7);
-            $table->date('Tanggal');
+            $table->string('Periode_gaji', 6);
             $table->decimal('Gaji_pokok', 15, 2)->default(0.00);
-            $table->decimal('Tunj_transport', 15, 2)->default(0.00);
-            $table->decimal('Tunj_makan', 15, 2)->default(0.00);
-            $table->decimal('Total_lembur', 15, 2)->default(0.00);
-            $table->decimal('Total_bonus', 15, 2)->default(0.00);
-            $table->decimal('Bruto', 15, 2)->default(0.00);
-            $table->decimal('Biaya_jabatan', 15, 2)->default(0.00);
-            $table->decimal('Netto_sebulan', 15, 2)->default(0.00);
-            $table->decimal('Netto_setahun', 15, 2)->default(0.00);
+            $table->decimal('Uang_makan', 15, 2)->default(0.00);
+            $table->decimal('Uang_transport', 15, 2)->default(0.00);
+            $table->decimal('Lembur', 15, 2)->default(0.00);
+            $table->decimal('Total_gaji', 15, 2)->default(0.00);
             $table->decimal('Total_ptkp', 15, 2)->default(0.00);
             $table->decimal('Pkp', 15, 2)->default(0.00);
             $table->decimal('Pph21_setahun', 15, 2)->default(0.00);
