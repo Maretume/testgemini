@@ -23,14 +23,14 @@ return new class extends Migration
             $table->decimal('Potongan', 15, 2)->default(0.00);
             $table->decimal('Pph21', 15, 2)->default(0.00);
             $table->decimal('Total_gaji', 15, 2)->default(0.00);
-            $table->string('Kd_user', 3)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
 
             $table->unique(['Kd_karyawan', 'Periode_gaji'], 'uq_penggajian_karyawan_periode');
             $table->index('Tanggal', 'idx_penggajian_tanggal');
             $table->index('Periode_gaji', 'idx_penggajian_periode');
 
             $table->foreign('Kd_karyawan')->references('Kd_karyawan')->on('karyawan')->onDelete('RESTRICT')->onUpdate('CASCADE');
-            $table->foreign('Kd_user')->references('Kd_user')->on('user')->onDelete('SET NULL')->onUpdate('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL')->onUpdate('CASCADE');
         });
     }
 

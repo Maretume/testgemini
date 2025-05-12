@@ -23,13 +23,13 @@ return new class extends Migration
             $table->decimal('Pkp', 15, 2)->default(0.00);
             $table->decimal('Pph21_setahun', 15, 2)->default(0.00);
             $table->decimal('Pph21_sebulan', 15, 2)->default(0.00);
-            $table->string('Kd_user', 3)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
 
             $table->unique(['Kd_karyawan', 'Periode_gaji'], 'uq_pph21_karyawan_periode');
             $table->index('Periode_gaji', 'idx_pph21_periode');
 
             $table->foreign('Kd_karyawan', 'fk_pph21_karyawan')->references('Kd_karyawan')->on('karyawan')->onDelete('RESTRICT')->onUpdate('CASCADE');
-            $table->foreign('Kd_user', 'fk_pph21_user')->references('Kd_user')->on('user')->onDelete('SET NULL')->onUpdate('CASCADE');
+            $table->foreign('user_id', 'fk_pph21_user')->references('id')->on('users')->onDelete('SET NULL')->onUpdate('CASCADE');
         });
     }
 

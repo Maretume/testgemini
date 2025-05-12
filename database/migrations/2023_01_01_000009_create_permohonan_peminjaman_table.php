@@ -17,12 +17,12 @@ return new class extends Migration
             $table->dateTime('timedate')->index();
             $table->decimal('Besar_pinjaman', 15, 2)->default(0.00);
             $table->string('keterangan', 100)->nullable();
-            $table->string('Kd_user', 3)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->enum('status_permohonan', ['Pending', 'Approved', 'Rejected'])->default('Pending');
             $table->timestamps();
 
             $table->foreign('Kd_karyawan')->references('Kd_karyawan')->on('karyawan')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('Kd_user')->references('Kd_user')->on('user')->onDelete('set null')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null')->onUpdate('cascade');
         });
     }
 

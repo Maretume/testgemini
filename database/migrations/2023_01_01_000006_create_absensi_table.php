@@ -21,11 +21,11 @@ return new class extends Migration
             $table->text('foto_masuk')->nullable();
             $table->text('foto_pulang')->nullable();
             $table->string('keterangan', 100)->nullable();
-            $table->string('Kd_user', 3);
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('Kd_karyawan')->references('Kd_karyawan')->on('karyawan')->onDelete('cascade');
-            $table->foreign('Kd_user')->references('Kd_user')->on('user')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

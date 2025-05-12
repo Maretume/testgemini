@@ -18,12 +18,12 @@ return new class extends Migration
             $table->decimal('Besar_pinjaman', 15, 2)->default(0.00);
             $table->string('keterangan', 100)->nullable();
             $table->enum('Status_lunas', ['Hutang', 'lunas'])->default('Hutang');
-            $table->string('Kd_user', 3)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
 
             $table->index('Tanggal', 'idx_peminjaman_tanggal');
             
             $table->foreign('Kd_karyawan')->references('Kd_karyawan')->on('karyawan')->onDelete('RESTRICT')->onUpdate('CASCADE');
-            $table->foreign('Kd_user')->references('Kd_user')->on('user')->onDelete('SET NULL')->onUpdate('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL')->onUpdate('CASCADE');
         });
     }
 
